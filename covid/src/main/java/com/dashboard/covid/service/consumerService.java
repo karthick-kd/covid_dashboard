@@ -35,10 +35,10 @@ public class consumerService {
 		String values;		
 		values=  restTemplate.getForObject("https://api.covid19india.org/data.json", String.class);
 		ObjectMapper mapper=new ObjectMapper();
-		List<CasesTimeSeries> cases=mapper.readValue(values,new TypeReference<List<CasesTimeSeries>>() {});
+		List<CasesTimeSeries> casesList=mapper.readValue(values,new TypeReference<List<CasesTimeSeries>>() {});
 		
        		
-		return cases;
+		return casesList;
 		
 		
 		
