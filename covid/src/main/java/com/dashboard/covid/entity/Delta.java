@@ -1,10 +1,12 @@
 package com.dashboard.covid.entity;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //@Getter
 //@Setter
 @JsonAutoDetect(fieldVisibility =JsonAutoDetect.Visibility.ANY)
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Delta {
 
 	private Long confirmed;

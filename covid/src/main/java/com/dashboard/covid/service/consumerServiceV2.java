@@ -10,12 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.dashboard.covid.entity.CasesTimeSeries;
 import com.dashboard.covid.entity.StateList;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 @RestController
 public class consumerServiceV2 {
@@ -27,12 +23,11 @@ public class consumerServiceV2 {
 	public List<StateList> getStateWiseDetails()
 	{	
 		
-		List<StateList> stateList=null;
+		List<StateList> stateListDetail=null;
 
 		try {
-			
-			ResponseEntity<StateList[]> responseEntity=restTemplate.getForEntity("https://api.covid19india.org/state_district_wise.json", StateList[].class);
-			stateList = Arrays.asList(responseEntity.getBody());
+			ResponseEntity<StateList[]> responseEntity=restTemplate.getForEntity("https://api.covid19india.org/v2/state_district_wise.json", StateList[].class);
+			stateListDetail = Arrays.asList(responseEntity.getBody());
 			
 			}
 		catch(Exception ex)
@@ -41,7 +36,7 @@ public class consumerServiceV2 {
 			
 		}
        		
-		return stateList;
+		return stateListDetail;
 		
 		
 		
