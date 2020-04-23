@@ -1,6 +1,5 @@
 package com.dashboard.covid.service;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,7 +25,9 @@ public class consumerServiceV2 {
 		List<StateList> stateListDetail=null;
 
 		try {
-			ResponseEntity<StateList[]> responseEntity=restTemplate.getForEntity("https://api.covid19india.org/v2/state_district_wise.json", StateList[].class);
+			
+			String uri="https://api.covid19india.org/v2/state_district_wise.json";
+			ResponseEntity<StateList[]> responseEntity=restTemplate.getForEntity(uri, StateList[].class);
 			stateListDetail = Arrays.asList(responseEntity.getBody());
 			
 			}
